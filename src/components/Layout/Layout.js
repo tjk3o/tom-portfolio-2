@@ -1,8 +1,8 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { createGlobalStyle } from 'styled-components';
 import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -34,10 +34,8 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        {/* <footer style={{ width: '100%' }}>
-          ©{new Date().getFullYear()}, Built by me
-        </footer> */}
       </div>
+      <Footer>©{new Date().getFullYear()}, Built by me</Footer>
       <GlobalStyle />
     </>
   );

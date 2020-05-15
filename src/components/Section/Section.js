@@ -3,13 +3,11 @@ import styled from 'styled-components';
 import { mq } from '../../config/mediaqueries';
 
 const SectionContainer = styled.section`
-  margin-bottom: 10px;
-  height: 300px;
-
+  margin-bottom: -50px;
+  
   ${mq.tabletPortrait_up`
-    height: 500px;
-    width: 500px;
-    // margin-bottom: 150px;
+  margin-bottom: -100px;
+  width: 500px;
   `}
   ${mq.tabletLandscape_up`
     width: 900px;
@@ -35,7 +33,7 @@ const Heading = styled.h1`
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: black;
 
-  ${mq.tabletPortrait_up`
+  ${mq.tabletLandscape_up`
       -webkit-text-stroke-width: 4px;
   `}
 
@@ -50,37 +48,31 @@ const SectionSubContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   border-radius: 15px 15px 0 0;
-  height: 120%;
 
-  ${// eslint-disable-next-line no-confusing-arrow
-  (props) =>
-    // eslint-disable-next-line implicit-arrow-linebreak
-    props.backgroundColor
-      ? `background-color: ${props.backgroundColor}`
-      : 'background-color: white'};
+  ${
+    // eslint-disable-next-line no-confusing-arrow
+    (props) =>
+      // eslint-disable-next-line implicit-arrow-linebreak
+      props.backgroundColor
+        ? `background-color: ${props.backgroundColor}`
+        : 'background-color: white'
+  };
+
+  // ${mq.tabletPortrait_up`
+  //   height: 600px;
+  // `}
 `;
 
-class Section extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sectionIsOpen: false,
-    };
-  }
-
-  render() {
-    const { heading, backgroundColor, children, index } = this.props;
-    const { sectionIsOpen } = this.state;
-
-    return (
-      <SectionContainer>
-        <Heading>{heading}</Heading>
-        <SectionSubContainer backgroundColor={backgroundColor}>
-          {children}
-        </SectionSubContainer>
-      </SectionContainer>
-    );
-  }
-}
+const Section = (props) => {
+  const { heading, backgroundColor, children } = props;
+  return (
+    <SectionContainer>
+      <Heading>{heading}</Heading>
+      <SectionSubContainer backgroundColor={backgroundColor}>
+        {children}
+      </SectionSubContainer>
+    </SectionContainer>
+  );
+};
 
 export default Section;

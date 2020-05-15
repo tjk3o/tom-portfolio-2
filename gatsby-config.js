@@ -5,6 +5,12 @@ module.exports = {
     author: `tjk30`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        displayName: true,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -14,11 +20,11 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-eslint",
+      resolve: 'gatsby-plugin-eslint',
       options: {
         test: /\.js$|\.jsx$/,
         exclude: /(node_modules|.cache|public)/,
-        stages: ["develop"],
+        stages: ['develop'],
         options: {
           emitWarning: true,
           failOnError: false,
@@ -43,4 +49,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};
