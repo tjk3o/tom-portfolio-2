@@ -89,3 +89,10 @@ export const FullWidthContainer = styled.div`
   margin: 0 -10px;
   `};
 `;
+
+export const DesktopOnly = styled.div`
+  display: none;
+  ${mq.desktop_up`
+  display: block;
+  `};
+`;

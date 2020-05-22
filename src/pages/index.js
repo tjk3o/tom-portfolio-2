@@ -4,18 +4,23 @@ import SEO from '../components/SEO/SEO';
 import Section from '../components/Section/Section';
 import Contact from '../components/Contact/Contact';
 import About from '../components/About/About';
+import colors from '../config/colors';
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <Section index={0} heading="About me." backgroundColor="brown">
+    <Section
+      heading="About me."
+      headingColor={colors.black}
+      backgroundColor={colors.sectionBlue}
+    >
       <About />
     </Section>
     <Section
-      index={1}
       style={{ position: 'relative', zIndex: '1' }}
-      heading="Contact."
-      backgroundColor="lightblue"
+      heading="Say hi."
+      headingColor={colors.white}
+      backgroundColor={colors.sectionGreen}
     >
       <Contact />
     </Section>

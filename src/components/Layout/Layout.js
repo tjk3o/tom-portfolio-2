@@ -1,44 +1,34 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import { createGlobalStyle } from 'styled-components';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
+import styled, { createGlobalStyle } from 'styled-components';
+import { mq } from '../../config/mediaqueries';
+import colors from '../../config/colors';
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color: #FEFBF5;
+    margin: 0;
+    background-color: ${colors.offWhite};
     font-family: sans-serif;
   }
 `;
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
+const MainWrapper = styled.div`
+  margin: 80px 15px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 
-  return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: '40px',
-          display: 'flex',
-          justifyContent: 'center',
-          flexWrap: 'wrap',
-        }}
-      >
-        <main>{children}</main>
-      </div>
-      <Footer>©{new Date().getFullYear()}, Built by me</Footer>
-      <GlobalStyle />
-    </>
-  );
-};
+  ${mq.tabletPortrait_up`
+    margin: 100px 40px 0;
+  `};
+`;
+
+const Layout = ({ children }) => (
+  <>
+    <MainWrapper>
+      <main>{children}</main>
+    </MainWrapper>
+    <GlobalStyle />
+  </>
+);
 
 export default Layout;

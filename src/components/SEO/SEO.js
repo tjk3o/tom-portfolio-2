@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
 function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
+  const { site, placeholderImage } = useStaticQuery(
     graphql`
       query {
         site {
@@ -12,6 +12,13 @@ function SEO({ description, lang, meta, title }) {
             title
             description
             author
+          }
+        }
+        placeholderImage: file(relativePath: { eq: "portrait.jpg" }) {
+          childImageSharp {
+            fluid(maxWidth: 600) {
+              ...GatsbyImageSharpFluid
+            }
           }
         }
       }
@@ -26,7 +33,7 @@ function SEO({ description, lang, meta, title }) {
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={site.siteMetadata.title}
       meta={[
         {
           name: 'description',
@@ -35,6 +42,10 @@ function SEO({ description, lang, meta, title }) {
         {
           property: 'og:title',
           content: title,
+        },
+        {
+          property: 'og:image',
+          content: placeholderImage.childImageSharp.fluid,
         },
         {
           property: 'og:description',
