@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: '/tom-portfolio-two',
   siteMetadata: {
     title: 'Tom Keogh | Javascript Developer',
     description:
